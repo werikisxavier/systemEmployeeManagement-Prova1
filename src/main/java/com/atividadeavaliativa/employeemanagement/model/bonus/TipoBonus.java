@@ -1,5 +1,5 @@
 
-package com.atividadeavaliativa.employeemanagement.model.Bonus;
+package com.atividadeavaliativa.employeemanagement.model.bonus;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 
 package com.atividadeavaliativa.employeemanagement.model;
 
-import com.atividadeavaliativa.employeemanagement.model.Bonus.TipoBonus;
+import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;

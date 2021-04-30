@@ -1,8 +1,8 @@
 package com.atividadeavaliativa.employeemanagement.model.collections;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
-import com.atividadeavaliativa.employeemanagement.model.IObserver;
-import com.atividadeavaliativa.employeemanagement.model.ISubject;
+import com.atividadeavaliativa.employeemanagement.model.observer.IObserver;
+import com.atividadeavaliativa.employeemanagement.model.observer.ISubject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

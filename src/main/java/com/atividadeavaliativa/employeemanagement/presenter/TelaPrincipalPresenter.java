@@ -35,7 +35,7 @@ public class TelaPrincipalPresenter {
     }
     
     private void iniciarViews() {
-        manterFuncionarioPresenter = new ManterFuncionarioPresenter(funcionarios);
+        manterFuncionarioPresenter = new ManterFuncionarioPresenter();
         buscarFuncionarioPresenter = new BuscarFuncionarioPresenter(funcionarios);
         calculaSalarioPresenter = new CalculaSalarioPresenter(funcionarios);
     }

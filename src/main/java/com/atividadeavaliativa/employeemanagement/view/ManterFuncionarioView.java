@@ -8,6 +8,7 @@ package com.atividadeavaliativa.employeemanagement.view;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -46,8 +47,8 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
         cbbFuncionárioDoMês = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         btSalvar = new javax.swing.JButton();
-        cbExcluir = new javax.swing.JButton();
-        cbEditar = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
         btFechar = new javax.swing.JButton();
         ftDataAdmissao = new javax.swing.JFormattedTextField();
 
@@ -86,12 +87,12 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
 
         btSalvar.setText("Salvar");
 
-        cbExcluir.setText("Excluir");
+        btExcluir.setText("Excluir");
 
-        cbEditar.setText("Editar");
-        cbEditar.addActionListener(new java.awt.event.ActionListener() {
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEditarActionPerformed(evt);
+                btEditarActionPerformed(evt);
             }
         });
 
@@ -151,9 +152,9 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(261, 261, 261)
-                                        .addComponent(cbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(cbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -186,8 +187,8 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btFechar)
-                    .addComponent(cbExcluir)
-                    .addComponent(cbEditar)
+                    .addComponent(btExcluir)
+                    .addComponent(btEditar)
                     .addComponent(btSalvar))
                 .addContainerGap())
         );
@@ -203,9 +204,9 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbFuncionárioDoMêsActionPerformed
 
-    private void cbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEditarActionPerformed
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbEditarActionPerformed
+    }//GEN-LAST:event_btEditarActionPerformed
 
     public JButton getBtFechar() {
         return btFechar;
@@ -213,6 +214,14 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
 
     public JButton getBtSalvar() {
         return btSalvar;
+    }
+
+    public JButton getBtEditar() {
+        return btEditar;
+    }
+
+    public JButton getBtExcluir() {
+        return btExcluir;
     }
 
     public JComboBox<String> getCbBonus() {
@@ -224,11 +233,11 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
     }
 
     public JButton getCbEditar() {
-        return cbEditar;
+        return btEditar;
     }
 
     public JButton getCbExcluir() {
-        return cbExcluir;
+        return btExcluir;
     }
 
     public JCheckBox getCbbFuncionárioDoMês() {
@@ -239,32 +248,36 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
         return ftDataAdmissao.getText();
     }
 
-    public String getTfFaltas() {
-        return tfFaltas.getText();
+    public JTextField getTfFaltas() {
+        return tfFaltas;
     }
 
-    public String getTfIdade() {
-        return tfIdade.getText();
+    public JTextField getTfIdade() {
+        return tfIdade;
     }
 
-    public String getTfNome() {
-        return tfNome.getText();
+    public JTextField getTfNome() {
+        return tfNome;
     }
 
-    public String getTfSalario() {
-        return tfSalario.getText();
+    public JTextField getTfSalario() {
+        return tfSalario;
     }
+
+
+
+   
 
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btFechar;
     private javax.swing.JButton btSalvar;
     private javax.swing.JComboBox<String> cbBonus;
     private javax.swing.JComboBox<String> cbCargo;
-    private javax.swing.JButton cbEditar;
-    private javax.swing.JButton cbExcluir;
     private javax.swing.JCheckBox cbbFuncionárioDoMês;
     private javax.swing.JFormattedTextField ftDataAdmissao;
     private javax.swing.JLabel jLabel1;

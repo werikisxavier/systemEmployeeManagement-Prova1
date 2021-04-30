@@ -75,11 +75,11 @@
                                   <Group type="102" attributes="0">
                                       <Component id="btFechar" min="-2" pref="80" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
-                                      <Component id="cbExcluir" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="btExcluir" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cbEditar" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="btEditar" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btSalvar" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
@@ -121,8 +121,8 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btFechar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -221,17 +221,17 @@
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cbExcluir">
+    <Component class="javax.swing.JButton" name="btExcluir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cbEditar">
+    <Component class="javax.swing.JButton" name="btEditar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEditarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btFechar">
