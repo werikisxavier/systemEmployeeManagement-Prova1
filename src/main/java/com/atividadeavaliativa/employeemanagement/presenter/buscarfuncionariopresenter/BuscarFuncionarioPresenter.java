@@ -1,8 +1,9 @@
-package com.atividadeavaliativa.employeemanagement.presenter;
+package com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.model.observer.IObserver;
-import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
+import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state.BuscarFuncionarioPresenterState;
+import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state.VisualizacaoState;
 import com.atividadeavaliativa.employeemanagement.view.BuscarFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,19 +13,21 @@ import javax.swing.table.DefaultTableModel;
 
 public class BuscarFuncionarioPresenter implements IObserver {
     
-    private static BuscarFuncionarioPresenter instence = null;
+    private BuscarFuncionarioPresenterState estado;
+    //private static BuscarFuncionarioPresenter instence = null;
     private final BuscarFuncionarioView view;
-    private final FuncionarioCollection funcionarios;
     private DefaultTableModel tbWeatherDatas;
     
-    public BuscarFuncionarioPresenter(FuncionarioCollection collection) {
+    
+    public BuscarFuncionarioPresenter() {
         
         view = new BuscarFuncionarioView();
         view.setSize(640, 350);
         view.setLocation(645, 0);
-        funcionarios = collection;
+        
         tableInit();
         initListeners();
+        this.estado= new VisualizacaoState(this);
     }
     
     public BuscarFuncionarioView getView() {
@@ -60,6 +63,16 @@ public class BuscarFuncionarioPresenter implements IObserver {
         
         view.getTblFuncionarios().setModel(tbWeatherDatas);
     }
+    
+
+    public BuscarFuncionarioPresenterState getEstado() {
+        return estado;
+    }
+
+    public void setEstado(BuscarFuncionarioPresenterState estado) {
+        this.estado = estado;
+    }
+    
     
     @Override
     public void update(List<Funcionario> funcionarios) {

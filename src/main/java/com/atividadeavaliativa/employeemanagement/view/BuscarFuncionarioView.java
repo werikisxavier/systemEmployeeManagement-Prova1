@@ -34,7 +34,6 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
         btNovo = new javax.swing.JButton();
         btFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Funcionário");
 
         jLabel1.setText("Nome");
@@ -55,6 +54,11 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblFuncionarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFuncionariosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblFuncionarios);
@@ -123,6 +127,10 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFuncionariosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblFuncionariosMouseClicked
+
     public JButton getBtBuscar() {
         return btBuscar;
     }
@@ -147,11 +155,10 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
         return tblFuncionarios;
     }
 
-    public String getTfNome() {
-        return tfNome.getText();
+    public JTextField getTfNome() {
+        return tfNome;
     }
 
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;

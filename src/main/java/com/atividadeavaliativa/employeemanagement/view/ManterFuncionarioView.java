@@ -8,6 +8,7 @@ package com.atividadeavaliativa.employeemanagement.view;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
 /**
@@ -244,8 +245,8 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
         return cbbFuncionárioDoMês;
     }
 
-    public String getFtDataAdmissao() {
-        return ftDataAdmissao.getText();
+    public JFormattedTextField getFtDataAdmissao() {
+        return ftDataAdmissao;
     }
 
     public JTextField getTfFaltas() {

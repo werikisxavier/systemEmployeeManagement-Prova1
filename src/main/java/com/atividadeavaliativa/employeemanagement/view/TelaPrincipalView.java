@@ -187,6 +187,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         return lbFuncionarios;
     }
 
+    public void setLbFuncionarios(String quantidadeFuncionarios) {
+        this.lbFuncionarios.setText(quantidadeFuncionarios); 
+    }
+
+    public void setLbVersao(JLabel lbVersao) {
+        this.lbVersao = lbVersao;
+    }
+    
+    
+
     public JLabel getLbVersao() {
         return lbVersao;
     }

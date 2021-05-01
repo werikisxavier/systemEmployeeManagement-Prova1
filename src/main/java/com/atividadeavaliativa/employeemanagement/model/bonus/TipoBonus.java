@@ -17,6 +17,18 @@ public abstract class TipoBonus {
     }
     
     public abstract double calculaValorBonus(Funcionario funcionario) throws Exception;
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public LocalDate getDateRecebimento() {
+        return dateRecebimento;
+    }
     
     
     

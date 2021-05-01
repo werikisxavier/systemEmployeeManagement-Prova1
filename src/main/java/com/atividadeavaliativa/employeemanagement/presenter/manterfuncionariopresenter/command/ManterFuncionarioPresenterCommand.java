@@ -1,7 +1,7 @@
 
-package com.atividadeavaliativa.employeemanagement.presenter.manterFuncionarioCommand;
+package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command;
 
-import com.atividadeavaliativa.employeemanagement.presenter.ManterFuncionarioPresenter;
+import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 
 
 public abstract class ManterFuncionarioPresenterCommand {

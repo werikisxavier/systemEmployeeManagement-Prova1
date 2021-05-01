@@ -117,5 +117,11 @@ public class Funcionario {
         return cargo.getSalarioBase();
     }
     
+    public String getDescricaoCargo(){
+       return cargo.getDescricao(); 
+    }
+    
+    
+    
     
 }

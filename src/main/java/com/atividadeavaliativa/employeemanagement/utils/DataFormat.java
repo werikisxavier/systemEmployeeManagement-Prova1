@@ -4,18 +4,18 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DateFormat {
+public class DataFormat {
 
-    private static DateFormat instance = null;
+    private static DataFormat instance = null;
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
 
-    private DateFormat() {
+    private DataFormat() {
     }
 
-    public static DateFormat getInstance() {
+    public static DataFormat getInstance() {
         if (instance == null) {
-            instance = new DateFormat();
+            instance = new DataFormat();
         }
         return instance;
     }

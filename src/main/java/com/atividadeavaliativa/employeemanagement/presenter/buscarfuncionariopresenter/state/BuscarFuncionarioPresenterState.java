@@ -1,31 +1,33 @@
-package com.atividadeavaliativa.employeemanagement.presenter.manterFuncionarioState;
 
-import com.atividadeavaliativa.employeemanagement.presenter.ManterFuncionarioPresenter;
+package com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state;
+
+import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.BuscarFuncionarioPresenter;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-public abstract class ManterFuncionarioPresenterState {
 
-    protected ManterFuncionarioPresenter presenter;
+public abstract class BuscarFuncionarioPresenterState {
+    
+    
+    protected BuscarFuncionarioPresenter presenter;
 
-    public ManterFuncionarioPresenterState(ManterFuncionarioPresenter manterFuncionarioPresenter) {
-        this.presenter = manterFuncionarioPresenter;
+    public BuscarFuncionarioPresenterState(BuscarFuncionarioPresenter buscarFuncionarioPresenter) {
+        this.presenter = buscarFuncionarioPresenter;
         limpaListeners();
     }
 
-    public void salvar() throws Exception {
+    public void incluir() throws Exception {
         throw new RuntimeException("Não é possivel salvar a partir desse estado!");
     }
 
-    public void editar() throws Exception {
+    public void visualizar() throws Exception {
         throw new RuntimeException("Não é possivel editar a partir desse estado!");
     }
 
-    public void excluir() throws Exception {
+    public void verBonus() throws Exception {
         throw new RuntimeException("Não é possivel excluir a partir desse estado!");
     }
-
 
     public final void fechar() {
         this.presenter.getView().setVisible(false);
@@ -42,5 +44,4 @@ public abstract class ManterFuncionarioPresenterState {
             }
         }
     }
-   
 }

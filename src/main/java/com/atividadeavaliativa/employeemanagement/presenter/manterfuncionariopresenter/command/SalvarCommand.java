@@ -1,5 +1,5 @@
 
-package com.atividadeavaliativa.employeemanagement.presenter.manterFuncionarioCommand;
+package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command;
 
 import com.atividadeavaliativa.employeemanagement.model.Cargo;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
@@ -7,8 +7,8 @@ import com.atividadeavaliativa.employeemanagement.model.bonus.BonusGeneroso;
 import com.atividadeavaliativa.employeemanagement.model.bonus.BonusNormal;
 import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
 import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
-import com.atividadeavaliativa.employeemanagement.presenter.ManterFuncionarioPresenter;
-import com.atividadeavaliativa.employeemanagement.utils.DateFormat;
+import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
+import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
 import java.time.LocalDate;
 
@@ -33,7 +33,7 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
         String nome = view.getTfNome().getText();
         Integer idade = Integer.parseInt(view.getTfIdade().getText());
         Integer quantidaDeFaltas = Integer.parseInt((view.getTfFaltas().getText()));
-        LocalDate dataAdmissao = DateFormat.parseStringToLocalDate(view.getFtDataAdmissao());
+        LocalDate dataAdmissao = DataFormat.parseStringToLocalDate(view.getFtDataAdmissao().getText());
 
         double salarioBase = Double.valueOf(view.getTfSalario().getText());
         boolean funcionarioDoMes1 = verificarOpcaoFuncionarioDoMes();
@@ -53,9 +53,9 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
 
     private TipoBonus getBonusFuncionario() {
         if (view.getCbBonus().getSelectedItem().equals("Normal")) {
-            return new BonusNormal("Bônus Normal", LocalDate.now());
+            return new BonusNormal("Normal", LocalDate.now());
         } else {
-            return new BonusGeneroso("Bônus Generoso", LocalDate.now());
+            return new BonusGeneroso("Generoso", LocalDate.now());
         }
     }
 
