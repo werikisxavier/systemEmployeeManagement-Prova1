@@ -14,7 +14,7 @@ public class ManterFuncionarioPresenter {
 
         view = new ManterFuncionarioView();
         view.setSize(640, 235);
-        this.estado = new InclusaoState(this);
+        this.estado = new InclusaoState(this,null);
     }
     
     public static ManterFuncionarioPresenter getInstance() {

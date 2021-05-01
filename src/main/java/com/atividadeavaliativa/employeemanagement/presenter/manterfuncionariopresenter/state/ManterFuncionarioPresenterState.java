@@ -8,8 +8,9 @@ import javax.swing.JButton;
 public abstract class ManterFuncionarioPresenterState {
 
     protected ManterFuncionarioPresenter presenter;
+    
 
-    public ManterFuncionarioPresenterState(ManterFuncionarioPresenter manterFuncionarioPresenter) {
+    public ManterFuncionarioPresenterState(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
         this.presenter = manterFuncionarioPresenter;
         limpaListeners();
     }
@@ -26,7 +27,6 @@ public abstract class ManterFuncionarioPresenterState {
         throw new RuntimeException("Não é possivel excluir a partir desse estado!");
     }
 
-
     public final void fechar() {
         this.presenter.getView().setVisible(false);
         this.presenter.getView().dispose();
@@ -42,5 +42,5 @@ public abstract class ManterFuncionarioPresenterState {
             }
         }
     }
-   
+
 }

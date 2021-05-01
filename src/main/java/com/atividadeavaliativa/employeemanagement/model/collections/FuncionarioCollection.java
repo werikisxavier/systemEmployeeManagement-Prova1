@@ -34,6 +34,7 @@ public class FuncionarioCollection implements ISubject {
         funcionarios.remove(funcionario);
         notifyObservers();
     }
+    
 
     public List<Funcionario> getFuncionarios() {
         return funcionarios;

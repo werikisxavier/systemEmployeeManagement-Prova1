@@ -56,11 +56,6 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblFuncionarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblFuncionariosMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblFuncionarios);
         if (tblFuncionarios.getColumnModel().getColumnCount() > 0) {
             tblFuncionarios.getColumnModel().getColumn(0).setMinWidth(40);
@@ -126,10 +121,6 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFuncionariosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblFuncionariosMouseClicked
 
     public JButton getBtBuscar() {
         return btBuscar;

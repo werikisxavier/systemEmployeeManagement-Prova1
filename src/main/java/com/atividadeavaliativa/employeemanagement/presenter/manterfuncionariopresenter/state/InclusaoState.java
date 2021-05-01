@@ -11,8 +11,8 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
 
     private ManterFuncionarioView view;
 
-    public InclusaoState(ManterFuncionarioPresenter manterFuncionarioPresenter) {
-        super(manterFuncionarioPresenter);
+    public InclusaoState(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
+        super(manterFuncionarioPresenter,idFuncionario);
         view = this.presenter.getView();
         initListeners();
         configurarView();
@@ -39,7 +39,7 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
         view.getBtFechar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                view.dispose();
+                fechar();
             }
         });
     }
@@ -59,6 +59,16 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
         this.presenter.getView().getTfSalario().setText("");
         this.presenter.getView().getTfSalario().setEditable(true);
         this.presenter.getView().setEnabled(true);
+        this.presenter.getView().getFtDataAdmissao().setText("");
+        this.presenter.getView().getFtDataAdmissao().setEditable(true);
+        this.presenter.getView().getCbCargo().setSelectedItem("Gerente");
+        this.presenter.getView().getCbCargo().setEditable(true);
+        this.presenter.getView().getCbCargo().setEnabled(true);
+        this.presenter.getView().getCbBonus().setSelectedItem("Normal");
+        this.presenter.getView().getCbBonus().setEditable(true);
+        this.presenter.getView().getCbBonus().setEnabled(true);
+        this.presenter.getView().getCbbFuncionárioDoMês().setSelected(false);
+        this.presenter.getView().getCbbFuncionárioDoMês().setEnabled(true);
     }
 
 }

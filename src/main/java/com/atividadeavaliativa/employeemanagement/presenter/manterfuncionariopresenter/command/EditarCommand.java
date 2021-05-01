@@ -1,4 +1,3 @@
-
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command;
 
 import com.atividadeavaliativa.employeemanagement.model.Cargo;
@@ -11,20 +10,24 @@ import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopre
 import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
 import java.time.LocalDate;
 
-public class SalvarCommand extends ManterFuncionarioPresenterCommand {
+public class EditarCommand extends ManterFuncionarioPresenterCommand {
 
-    public SalvarCommand(ManterFuncionarioPresenter manterFuncionarioPresenter) {
+    private Integer idFuncionario;
+
+    public EditarCommand(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
         super(manterFuncionarioPresenter);
-        view=this.presenter.getView();
+        this.idFuncionario = idFuncionario;
+
     }
-    
+
     @Override
     public void executar() throws Exception {
-        addFuncionario();
+        editarFuncionario();
     }
 
-    private void addFuncionario() throws Exception {
-        String cargo = String.valueOf(view.getCbCargo().getSelectedItem());
+    private void editarFuncionario() throws Exception {
+
+        String cargoDescricao = String.valueOf(view.getCbCargo().getSelectedItem());
         String nome = view.getTfNome().getText();
         Integer idade = Integer.parseInt(view.getTfIdade().getText());
         Integer quantidaDeFaltas = Integer.parseInt((view.getTfFaltas().getText()));
@@ -32,18 +35,21 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
 
         double salarioBase = Double.valueOf(view.getTfSalario().getText());
         boolean funcionarioDoMes1 = verificarOpcaoFuncionarioDoMes();
-        Funcionario funcionario = new Funcionario(
-                getIdFuncionario(),
-                nome,
-                idade,
-                quantidaDeFaltas,
-                new Cargo(cargo, salarioBase),
-                dataAdmissao,
-                funcionarioDoMes1);
+        Cargo cargo = new Cargo(cargoDescricao, salarioBase);
 
-        TipoBonus bunus = getBonusFuncionario();
-        FuncionarioCollection.getInstance().addFuncionario(funcionario);
-        funcionario.addBonus(bunus);
+        for (Funcionario func : FuncionarioCollection.getInstance().getFuncionarios()) {
+            if (func.getId().equals(idFuncionario)) {
+                func.setNome(nome);
+                func.setIdade(idade);
+                func.setQuantidaDeFaltas(quantidaDeFaltas);
+                func.setDataAdmissao(dataAdmissao);
+                func.setFuncionarioDoMes(funcionarioDoMes1);
+                func.setCargo(cargo);
+                TipoBonus bunus = getBonusFuncionario();
+                func.addBonus(bunus);
+                FuncionarioCollection.getInstance().notifyObservers();
+            }
+        }
     }
 
     private TipoBonus getBonusFuncionario() {

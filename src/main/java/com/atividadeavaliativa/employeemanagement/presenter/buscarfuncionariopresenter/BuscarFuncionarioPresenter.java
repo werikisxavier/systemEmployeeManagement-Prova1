@@ -5,44 +5,39 @@ import com.atividadeavaliativa.employeemanagement.model.observer.IObserver;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state.BuscarFuncionarioPresenterState;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state.VisualizacaoState;
 import com.atividadeavaliativa.employeemanagement.view.BuscarFuncionarioView;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 public class BuscarFuncionarioPresenter implements IObserver {
     
+    private static BuscarFuncionarioPresenter instence = null;
     private BuscarFuncionarioPresenterState estado;
-    //private static BuscarFuncionarioPresenter instence = null;
     private final BuscarFuncionarioView view;
     private DefaultTableModel tbWeatherDatas;
     
     
-    public BuscarFuncionarioPresenter() {
+    private BuscarFuncionarioPresenter() {
         
         view = new BuscarFuncionarioView();
         view.setSize(640, 350);
         view.setLocation(645, 0);
         
         tableInit();
-        initListeners();
         this.estado= new VisualizacaoState(this);
+    }
+    
+        public static BuscarFuncionarioPresenter getInstance() {
+        if (instence == null) {
+            instence = new BuscarFuncionarioPresenter();
+        }
+        return instence;
     }
     
     public BuscarFuncionarioView getView() {
         return view;
     }
     
-    private void initListeners() {
-        view.getBtFechar().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.dispose();
-            }
-        });
-   
-    }
     
     private void clearTable() {
         if (tbWeatherDatas.getRowCount() > 0) {

@@ -1,7 +1,8 @@
 package com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state;
 
-import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.BuscarFuncionarioPresenter;
+import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
+import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state.VisualizarState;
 import com.atividadeavaliativa.employeemanagement.view.BuscarFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,29 +21,25 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
 
     @Override
     public void visualizar() {
-    //ver funcionario
+        ManterFuncionarioPresenter.getInstance().setEstado(new VisualizarState(
+                ManterFuncionarioPresenter.getInstance(),
+                getFuncionarioSelecionado()));
     }
 
     @Override
     public void verBonus() {
-    //ver funcionario
-    }
-    
-    private void getFuncionarioSelecionado(){
-    Integer idSelecionado = (Integer)view.getTblFuncionarios().getValueAt(0, view.getTblFuncionarios().getSelectedRow());  
-        
-        System.out.println("oi"+idSelecionado);
-        
+        //ver funcionario
     }
 
     private void initListeners() {
+
         view.getBtVisualizar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //ver
+                visualizar();
             }
         });
-        
+
         view.getBtVerBonus().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,5 +66,10 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
         this.presenter.getView().getTfNome().setEditable(true);
         this.presenter.getView().setEnabled(true);
 
+    }
+
+    private Integer getFuncionarioSelecionado() {
+        Integer idSelecionado = (Integer) (view.getTblFuncionarios().getValueAt(view.getTblFuncionarios().getSelectedRow(), 0));
+        return idSelecionado;
     }
 }

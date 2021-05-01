@@ -57,7 +57,7 @@ public class ManterFuncionarioView extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Cargo");
 
-        cbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Secretario", "Diretor", "Porteiro", "Motorista", "Programador", " " }));
+        cbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Secretario", "Diretor", "Porteiro", "Motorista", "Programador" }));
 
         jLabel2.setText("Nome");
 

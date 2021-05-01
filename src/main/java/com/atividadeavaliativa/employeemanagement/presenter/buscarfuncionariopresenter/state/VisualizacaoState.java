@@ -25,6 +25,11 @@ public class VisualizacaoState extends BuscarFuncionarioPresenterState {
         ManterFuncionarioPresenter.getInstance().getView().setVisible(true);
     }
 
+    public void visualizar() {
+        this.presenter.setEstado(new FuncionarioSelecionadoState(this.presenter));
+
+    }
+
     private void initListeners() {
         view.getBtNovo().addActionListener(new ActionListener() {
             @Override
@@ -36,10 +41,12 @@ public class VisualizacaoState extends BuscarFuncionarioPresenterState {
         view.getTblFuncionarios().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (view.getTblFuncionarios().getSelectedRow() > -1) {
-                getFuncionarioSelecionado();
+                    visualizar();
+                    getFuncionarioSelecionado();
                 }
             }
         });
+
 
         view.getBtFechar().addActionListener(new ActionListener() {
             @Override
@@ -62,7 +69,8 @@ public class VisualizacaoState extends BuscarFuncionarioPresenterState {
 
     }
 
-    private void getFuncionarioSelecionado() {
-        Integer idSelecionado = (Integer) (view.getTblFuncionarios().getValueAt(view.getTblFuncionarios().getSelectedRow(),0));
+    private Integer getFuncionarioSelecionado() {
+        Integer idSelecionado = (Integer) (view.getTblFuncionarios().getValueAt(view.getTblFuncionarios().getSelectedRow(), 0));
+        return idSelecionado;
     }
 }
