@@ -19,6 +19,7 @@ public class TelaPrincipalPresenter implements IObserver {
     private BuscarFuncionarioPresenter buscarFuncionarioPresenter;
     private ManterFuncionarioPresenter manterFuncionarioPresenter;
     private CalculaSalarioPresenter calculaSalarioPresenter;
+    private VerBonusPresenter verBonusPresenter;
 
     private TelaPrincipalPresenter() {
 

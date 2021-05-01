@@ -16,7 +16,7 @@ public abstract class TipoBonus {
         this.dateRecebimento = dateRecebimento;
     }
     
-    public abstract double calculaValorBonus(Funcionario funcionario) throws Exception;
+    public abstract double calculaValorBonus(Funcionario funcionario);
 
     public String getDescricao() {
         return descricao;

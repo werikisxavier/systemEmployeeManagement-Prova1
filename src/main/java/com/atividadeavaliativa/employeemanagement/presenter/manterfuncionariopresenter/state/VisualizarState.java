@@ -15,36 +15,34 @@ public class VisualizarState extends ManterFuncionarioPresenterState {
 
     private ManterFuncionarioView view;
     private List<Funcionario> funcionarios;
-    private Integer idFuncionario;
     private Funcionario funcionario;
 
-    public VisualizarState(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
-        super(manterFuncionarioPresenter, idFuncionario);
+    public VisualizarState(ManterFuncionarioPresenter manterFuncionarioPresenter, Funcionario funcionario) {
+        super(manterFuncionarioPresenter, funcionario);
         view = this.presenter.getView();
-        this.idFuncionario = idFuncionario;
-        this.funcionario = getFuncionario();
+        this.funcionario = funcionario;
         configurarView();
         initListeners();
     }
 
     @Override
     public void editar() {
-        this.presenter.setEstado(new EditarState(presenter, idFuncionario));
+        this.presenter.setEstado(new EditarState(presenter, funcionario));
     }
 
     @Override
     public void excluir() {
-        int respota = JOptionPane.showConfirmDialog( null,"Deseja realmente excluir o Funcionário:\n"
-                                                    +"ID: "
-                                                    + String.valueOf(funcionario.getId())
-                                                    +", Nome: "
-                                                    + funcionario.getNome()
-                                                    ,"Confirmação de exclusão",JOptionPane.YES_NO_OPTION);
-        if(respota==0){
-            new ExcluirCommand(this.presenter,funcionario).executar();
+        int respota = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir o Funcionário:\n"
+                + "ID: "
+                + String.valueOf(funcionario.getId())
+                + ", Nome: "
+                + funcionario.getNome(),
+                 "Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
+        if (respota == 0) {
+            new ExcluirCommand(this.presenter, funcionario).executar();
             JOptionPane.showMessageDialog(view, "Funcionário Excluido com sucesso!");
             fechar();
-        } 
+        }
     }
 
     private void initListeners() {
@@ -58,7 +56,7 @@ public class VisualizarState extends ManterFuncionarioPresenterState {
         view.getBtExcluir().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               excluir(); 
+                excluir();
             }
         });
 
@@ -93,19 +91,6 @@ public class VisualizarState extends ManterFuncionarioPresenterState {
         this.presenter.getView().getCbBonus().setSelectedItem(this.funcionario.getBonusCumulativo().get(0).getDescricao());
         this.presenter.getView().getCbBonus().setEnabled(false);
         this.presenter.getView().setEnabled(true);
-    }
-
-    private Funcionario getFuncionario() {
-        if (idFuncionario != null) {
-            funcionarios = FuncionarioCollection.getInstance().getFuncionarios();
-
-            for (Funcionario func : funcionarios) {
-                if (func.getId().equals(idFuncionario)) {
-                    return func;
-                }
-            }
-        }
-        return null;
     }
 
 }

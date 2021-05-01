@@ -1,5 +1,6 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state;
 
+import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import java.awt.Component;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ public abstract class ManterFuncionarioPresenterState {
     protected ManterFuncionarioPresenter presenter;
     
 
-    public ManterFuncionarioPresenterState(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
+    public ManterFuncionarioPresenterState(ManterFuncionarioPresenter manterFuncionarioPresenter, Funcionario funcionario) {
         this.presenter = manterFuncionarioPresenter;
         limpaListeners();
     }

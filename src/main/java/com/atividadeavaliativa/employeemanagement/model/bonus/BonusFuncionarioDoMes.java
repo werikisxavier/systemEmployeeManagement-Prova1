@@ -10,10 +10,8 @@ public class BonusFuncionarioDoMes extends TipoBonus {
     }
 
     @Override
-    public double calculaValorBonus(Funcionario funcionario) throws Exception{
-
+    public double calculaValorBonus(Funcionario funcionario) {
         this.valor = getBonus(funcionario.isFuncionarioDoMes());
-
         return this.valor;
     }
 

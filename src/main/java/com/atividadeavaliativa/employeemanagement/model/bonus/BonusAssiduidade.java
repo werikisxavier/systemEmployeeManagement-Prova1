@@ -11,7 +11,7 @@ public class BonusAssiduidade extends TipoBonus {
     }
 
     @Override
-    public double calculaValorBonus(Funcionario funcionario) throws Exception {
+    public double calculaValorBonus(Funcionario funcionario){
         this.valor = getBonus(funcionario.getQuantidaDeFaltas(), funcionario.getSalarioBase());
 
         return this.valor;

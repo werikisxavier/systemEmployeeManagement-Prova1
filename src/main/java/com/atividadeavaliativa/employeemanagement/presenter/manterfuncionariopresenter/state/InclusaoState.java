@@ -1,5 +1,6 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state;
 
+import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.SalvarCommand;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
@@ -11,8 +12,8 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
 
     private ManterFuncionarioView view;
 
-    public InclusaoState(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
-        super(manterFuncionarioPresenter,idFuncionario);
+    public InclusaoState(ManterFuncionarioPresenter manterFuncionarioPresenter,Funcionario funcionario) {
+        super(manterFuncionarioPresenter,funcionario);
         view = this.presenter.getView();
         initListeners();
         configurarView();

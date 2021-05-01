@@ -10,7 +10,7 @@ public class BonusTempoDeServico extends TipoBonus {
     }
 
     @Override
-    public double calculaValorBonus(Funcionario funcionario) throws Exception{
+    public double calculaValorBonus(Funcionario funcionario){
         this.valor = getBonus(funcionario.getAnosDeTrabalho(),funcionario.getSalarioBase());
         return this.valor;
     }

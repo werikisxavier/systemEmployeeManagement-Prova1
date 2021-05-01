@@ -11,7 +11,7 @@ public class BonusGeneroso extends TipoBonus {
     }
 
     @Override
-    public double calculaValorBonus(Funcionario funcionario) throws Exception {
+    public double calculaValorBonus(Funcionario funcionario) {
         this.valor=500.00;
         return this.valor;
     }

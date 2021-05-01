@@ -1,7 +1,6 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
-import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.BuscarFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state.VisualizacaoState;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
@@ -10,21 +9,17 @@ import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 public class EditarState extends ManterFuncionarioPresenterState {
 
     private ManterFuncionarioView view;
-    private List<Funcionario> funcionarios;
-    private Integer idFuncionario;
     private Funcionario funcionario;
 
-    public EditarState(ManterFuncionarioPresenter manterFuncionarioPresenter, Integer idFuncionario) {
-        super(manterFuncionarioPresenter, idFuncionario);
+    public EditarState(ManterFuncionarioPresenter manterFuncionarioPresenter, Funcionario funcionario) {
+        super(manterFuncionarioPresenter, funcionario);
         view = this.presenter.getView();
-        this.idFuncionario = idFuncionario;
-        this.funcionario = getFuncionario();
+        this.funcionario = funcionario;
         configurarView();
         initListeners();
 
@@ -32,11 +27,11 @@ public class EditarState extends ManterFuncionarioPresenterState {
 
     @Override
     public void salvar() throws Exception {
-        new EditarCommand(this.presenter,idFuncionario).executar();
+        new EditarCommand(this.presenter,funcionario.getId()).executar();
         JOptionPane.showMessageDialog(view, "Funcionário editado com sucesso!");
         BuscarFuncionarioPresenter.getInstance().setEstado(new VisualizacaoState(
                 BuscarFuncionarioPresenter.getInstance()));
-        this.presenter.setEstado(new VisualizarState (presenter, idFuncionario));
+        this.presenter.setEstado(new VisualizarState (presenter, funcionario));
     }
 
     private void initListeners() {
@@ -86,14 +81,4 @@ public class EditarState extends ManterFuncionarioPresenterState {
         this.presenter.getView().setEnabled(true);
     }
 
-    private Funcionario getFuncionario() {
-        funcionarios = FuncionarioCollection.getInstance().getFuncionarios();
-        
-        for (Funcionario func : funcionarios) {
-            if (func.getId().equals(idFuncionario)) {
-                return func;
-            }
-        }
-        return null;
-    }
 }

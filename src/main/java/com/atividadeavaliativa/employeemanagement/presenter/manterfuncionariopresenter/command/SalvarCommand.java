@@ -1,8 +1,8 @@
-
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command;
 
 import com.atividadeavaliativa.employeemanagement.model.Cargo;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
+import com.atividadeavaliativa.employeemanagement.model.bonus.BonusFuncionarioDoMes;
 import com.atividadeavaliativa.employeemanagement.model.bonus.BonusGeneroso;
 import com.atividadeavaliativa.employeemanagement.model.bonus.BonusNormal;
 import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
@@ -15,9 +15,9 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
 
     public SalvarCommand(ManterFuncionarioPresenter manterFuncionarioPresenter) {
         super(manterFuncionarioPresenter);
-        view=this.presenter.getView();
+        view = this.presenter.getView();
     }
-    
+
     @Override
     public void executar() throws Exception {
         addFuncionario();
@@ -31,7 +31,7 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
         LocalDate dataAdmissao = DataFormat.parseStringToLocalDate(view.getFtDataAdmissao().getText());
 
         double salarioBase = Double.valueOf(view.getTfSalario().getText());
-        boolean funcionarioDoMes1 = verificarOpcaoFuncionarioDoMes();
+        boolean IsFuncionarioDoMes = verificarOpcaoFuncionarioDoMes();
         Funcionario funcionario = new Funcionario(
                 getIdFuncionario(),
                 nome,
@@ -39,11 +39,14 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
                 quantidaDeFaltas,
                 new Cargo(cargo, salarioBase),
                 dataAdmissao,
-                funcionarioDoMes1);
+                IsFuncionarioDoMes);
 
         TipoBonus bunus = getBonusFuncionario();
         FuncionarioCollection.getInstance().addFuncionario(funcionario);
         funcionario.addBonus(bunus);
+        if (IsFuncionarioDoMes) {
+            funcionario.addBonus(new BonusFuncionarioDoMes("Funcionario do Mês", LocalDate.now()));
+        }
     }
 
     private TipoBonus getBonusFuncionario() {
