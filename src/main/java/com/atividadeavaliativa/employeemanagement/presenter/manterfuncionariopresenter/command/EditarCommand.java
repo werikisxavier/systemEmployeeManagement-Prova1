@@ -7,7 +7,7 @@ import com.atividadeavaliativa.employeemanagement.model.bonus.BonusNormal;
 import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
 import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
-import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
+import com.atividadeavaliativa.employeemanagement.utils.FormatarData;
 import java.time.LocalDate;
 
 public class EditarCommand extends ManterFuncionarioPresenterCommand {
@@ -31,7 +31,7 @@ public class EditarCommand extends ManterFuncionarioPresenterCommand {
         String nome = view.getTfNome().getText();
         Integer idade = Integer.parseInt(view.getTfIdade().getText());
         Integer quantidaDeFaltas = Integer.parseInt((view.getTfFaltas().getText()));
-        LocalDate dataAdmissao = DataFormat.parseStringToLocalDate(view.getFtDataAdmissao().getText());
+        LocalDate dataAdmissao = FormatarData.parseStringToLocalDate(view.getFtDataAdmissao().getText());
 
         double salarioBase = Double.valueOf(view.getTfSalario().getText());
         boolean funcionarioDoMes1 = verificarOpcaoFuncionarioDoMes();

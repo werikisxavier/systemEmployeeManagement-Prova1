@@ -36,7 +36,7 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
 
     @Override
     public void verBonus() {
-        VerBonusPresenter.getInstance(funcionario);
+    new VerBonusPresenter(funcionario);
     }
 
     private void initListeners() {

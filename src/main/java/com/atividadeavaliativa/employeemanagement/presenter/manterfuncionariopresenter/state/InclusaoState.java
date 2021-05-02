@@ -2,7 +2,7 @@ package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopr
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
-import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.SalvarCommand;
+import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.InserirCommand;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +21,7 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
 
     @Override
     public void salvar() throws Exception {
-        new SalvarCommand(this.presenter).executar();
+        new InserirCommand(this.presenter).executar();
         JOptionPane.showMessageDialog(view, "Funcionário inserido com sucesso!");
     }
 

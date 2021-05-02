@@ -4,7 +4,7 @@ import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.ExcluirCommand;
-import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
+import com.atividadeavaliativa.employeemanagement.utils.FormatarData;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -84,7 +84,7 @@ public class VisualizarState extends ManterFuncionarioPresenterState {
         this.presenter.getView().getTfSalario().setEditable(false);
         this.presenter.getView().getCbCargo().setSelectedItem(this.funcionario.getDescricaoCargo());
         this.presenter.getView().getCbCargo().setEnabled(false);
-        this.presenter.getView().getFtDataAdmissao().setText(DataFormat.parseLocalDateToString(this.funcionario.getDataAdmissao()));
+        this.presenter.getView().getFtDataAdmissao().setText(FormatarData.parseLocalDateToString(this.funcionario.getDataAdmissao()));
         this.presenter.getView().getFtDataAdmissao().setEditable(false);
         this.presenter.getView().getCbbFuncionárioDoMês().setSelected(this.funcionario.isFuncionarioDoMes());
         this.presenter.getView().getCbbFuncionárioDoMês().setEnabled(false);

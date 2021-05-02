@@ -5,6 +5,10 @@
  */
 package com.atividadeavaliativa.employeemanagement.view;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 /**
  *
  * @author W-E-R
@@ -45,7 +49,7 @@ public class CalculaSalarioView extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Funcionário", "Data", "Salário Base (R$)", "Bônus (R$)", "Salário (R$)"
+                "Funcionário", "Data ", "Salário Base (R$)", "Bônus (R$)", "Salário (R$)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -87,7 +91,7 @@ public class CalculaSalarioView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dcDataCalculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dcDataCalculo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -116,7 +120,35 @@ public class CalculaSalarioView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtBuscar() {
+        return btBuscar;
+    }
 
+    public JButton getBtCalcular() {
+        return btCalcular;
+    }
+
+    public JButton getBtFechar() {
+        return btFechar;
+    }
+
+    public JButton getBtListarTodos() {
+        return btListarTodos;
+    }
+
+    public JDateChooser getDcDDataBusca() {
+        return dcDDataBusca;
+    }
+
+    public JDateChooser getDcDataCalculo() {
+        return dcDataCalculo;
+    }
+
+    public JTable getTblFuncionarios() {
+        return tblFuncionarios;
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btCalcular;

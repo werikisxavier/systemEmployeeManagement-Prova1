@@ -5,7 +5,7 @@ import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopre
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state.VisualizacaoState;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.EditarCommand;
-import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
+import com.atividadeavaliativa.employeemanagement.utils.FormatarData;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +71,7 @@ public class EditarState extends ManterFuncionarioPresenterState {
         this.presenter.getView().getCbCargo().setSelectedItem(this.funcionario.getDescricaoCargo());
         this.presenter.getView().getCbCargo().setEditable(true);
         this.presenter.getView().getCbCargo().setEnabled(true);
-        this.presenter.getView().getFtDataAdmissao().setText(DataFormat.parseLocalDateToString(this.funcionario.getDataAdmissao()));
+        this.presenter.getView().getFtDataAdmissao().setText(FormatarData.parseLocalDateToString(this.funcionario.getDataAdmissao()));
         this.presenter.getView().getFtDataAdmissao().setEditable(true);
         this.presenter.getView().getCbbFuncionárioDoMês().setSelected(this.funcionario.isFuncionarioDoMes());
         this.presenter.getView().getCbbFuncionárioDoMês().setEnabled(true);

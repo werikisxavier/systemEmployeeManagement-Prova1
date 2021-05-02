@@ -2,25 +2,23 @@ package com.atividadeavaliativa.employeemanagement.presenter;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
-import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
+import com.atividadeavaliativa.employeemanagement.utils.FormatarData;
 import com.atividadeavaliativa.employeemanagement.view.TelaPrincipalView;
 import com.atividadeavaliativa.employeemanagement.view.VerBonusView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 import java.util.List;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 public final class VerBonusPresenter {
 
-    private static VerBonusPresenter instence = null;
     private final TelaPrincipalView view;
     private final VerBonusView jDialog;
     private final Funcionario funcionario;
     private DefaultTableModel tbWeatherDatas;
     
-    private VerBonusPresenter(Funcionario funcionario) {
+    public VerBonusPresenter(Funcionario funcionario) {
         view = TelaPrincipalPresenter.getInstance().getView();
         jDialog = new VerBonusView(view, true);
         jDialog.setSize(420, 280);
@@ -33,12 +31,6 @@ public final class VerBonusPresenter {
         jDialog.setVisible(true);
     }
 
-    public static VerBonusPresenter getInstance(Funcionario funcionario) {
-        if (instence == null) {
-            instence = new VerBonusPresenter(funcionario);
-        }
-        return instence;
-    }
 
     public VerBonusView getView() {
         return jDialog;
@@ -82,7 +74,7 @@ public final class VerBonusPresenter {
             for (TipoBonus bonus : listBonus) {
                 tbWeatherDatas.addRow(new Object[]{
                     bonus.getDescricao(),
-                    DataFormat.parseLocalDateToString(bonus.getDateRecebimento()),
+                    FormatarData.parseLocalDateToString(bonus.getDateRecebimento()),
                     bonus.calculaValorBonus(funcionario)
                 });
             }

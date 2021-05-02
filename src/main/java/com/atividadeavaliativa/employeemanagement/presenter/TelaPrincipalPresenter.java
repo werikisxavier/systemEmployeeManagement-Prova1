@@ -70,6 +70,7 @@ public class TelaPrincipalPresenter implements IObserver {
             public void actionPerformed(ActionEvent e) {
                 view.add(calculaSalarioPresenter.getView());
                 calculaSalarioPresenter.getView().setVisible(true);
+                
             }
         });
     }

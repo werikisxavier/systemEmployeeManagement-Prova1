@@ -2,18 +2,21 @@ package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopr
 
 import com.atividadeavaliativa.employeemanagement.model.Cargo;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
+import com.atividadeavaliativa.employeemanagement.model.bonus.BonusAssiduidade;
 import com.atividadeavaliativa.employeemanagement.model.bonus.BonusFuncionarioDoMes;
 import com.atividadeavaliativa.employeemanagement.model.bonus.BonusGeneroso;
 import com.atividadeavaliativa.employeemanagement.model.bonus.BonusNormal;
+import com.atividadeavaliativa.employeemanagement.model.bonus.BonusPorCargo;
+import com.atividadeavaliativa.employeemanagement.model.bonus.BonusTempoDeServico;
 import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
 import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
-import com.atividadeavaliativa.employeemanagement.utils.DataFormat;
+import com.atividadeavaliativa.employeemanagement.utils.FormatarData;
 import java.time.LocalDate;
 
-public class SalvarCommand extends ManterFuncionarioPresenterCommand {
+public class InserirCommand extends ManterFuncionarioPresenterCommand {
 
-    public SalvarCommand(ManterFuncionarioPresenter manterFuncionarioPresenter) {
+    public InserirCommand(ManterFuncionarioPresenter manterFuncionarioPresenter) {
         super(manterFuncionarioPresenter);
         view = this.presenter.getView();
     }
@@ -28,7 +31,7 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
         String nome = view.getTfNome().getText();
         Integer idade = Integer.parseInt(view.getTfIdade().getText());
         Integer quantidaDeFaltas = Integer.parseInt((view.getTfFaltas().getText()));
-        LocalDate dataAdmissao = DataFormat.parseStringToLocalDate(view.getFtDataAdmissao().getText());
+        LocalDate dataAdmissao = FormatarData.parseStringToLocalDate(view.getFtDataAdmissao().getText());
 
         double salarioBase = Double.valueOf(view.getTfSalario().getText());
         boolean IsFuncionarioDoMes = verificarOpcaoFuncionarioDoMes();
@@ -40,21 +43,35 @@ public class SalvarCommand extends ManterFuncionarioPresenterCommand {
                 new Cargo(cargo, salarioBase),
                 dataAdmissao,
                 IsFuncionarioDoMes);
-
-        TipoBonus bunus = getBonusFuncionario();
+        
         FuncionarioCollection.getInstance().addFuncionario(funcionario);
-        funcionario.addBonus(bunus);
+        
+        TipoBonus bonusIndependente = getBonusIndependenteFuncionario();
+        TipoBonus bonusTempoDeServico =  new BonusTempoDeServico("Tempo de serviço", LocalDate.now());
+        TipoBonus bonusAssiduidade =  new BonusAssiduidade("Assiduidade", LocalDate.now());
+        TipoBonus bonusFuncionarioDoMes = new BonusFuncionarioDoMes("Funcionario do Mês", LocalDate.now());
+        TipoBonus bonusPorCargo = new BonusPorCargo("Por cargo", LocalDate.now());
+        
+        funcionario.addBonus(bonusIndependente);
+        funcionario.addBonus(bonusTempoDeServico);
+        funcionario.addBonus(bonusAssiduidade);
+        funcionario.addBonus(bonusPorCargo);
+        
         if (IsFuncionarioDoMes) {
-            funcionario.addBonus(new BonusFuncionarioDoMes("Funcionario do Mês", LocalDate.now()));
+            funcionario.addBonus(bonusFuncionarioDoMes);
         }
+        
+        
     }
 
-    private TipoBonus getBonusFuncionario() {
+    private TipoBonus getBonusIndependenteFuncionario() {
         if (view.getCbBonus().getSelectedItem().equals("Normal")) {
             return new BonusNormal("Normal", LocalDate.now());
         } else {
             return new BonusGeneroso("Generoso", LocalDate.now());
         }
     }
+    
+    
 
 }
