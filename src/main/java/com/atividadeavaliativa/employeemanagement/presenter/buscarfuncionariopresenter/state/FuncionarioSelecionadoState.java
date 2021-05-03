@@ -29,14 +29,15 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
 
     @Override
     public void visualizar() {
-        ManterFuncionarioPresenter.getInstance().setEstado(new VisualizarState(
-                ManterFuncionarioPresenter.getInstance(),
+        ManterFuncionarioPresenter.getInstance(this.presenter.getGerenciadorLog()).setEstado(new VisualizarState(
+                ManterFuncionarioPresenter.getInstance(this.presenter.getGerenciadorLog()),
                 funcionario));
     }
 
     @Override
     public void verBonus() {
-    new VerBonusPresenter(funcionario);
+        new VerBonusPresenter(funcionario);
+        this.presenter.getGerenciadorLog().getLog().whiteBonusConsulta(funcionario);
     }
 
     private void initListeners() {
@@ -59,6 +60,13 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
             @Override
             public void actionPerformed(ActionEvent e) {
                 fechar();
+            }
+        });
+
+        view.getBtBuscar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscar();
             }
         });
     }
@@ -92,5 +100,9 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
             }
         }
         return null;
+    }
+
+    private void buscar() {
+        this.presenter.buscarPorNome();
     }
 }

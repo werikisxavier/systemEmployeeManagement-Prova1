@@ -16,6 +16,8 @@ import java.time.LocalDate;
 
 public class InserirCommand extends ManterFuncionarioPresenterCommand {
 
+    Funcionario funcionario;
+    
     public InserirCommand(ManterFuncionarioPresenter manterFuncionarioPresenter) {
         super(manterFuncionarioPresenter);
         view = this.presenter.getView();
@@ -24,6 +26,8 @@ public class InserirCommand extends ManterFuncionarioPresenterCommand {
     @Override
     public void executar() throws Exception {
         addFuncionario();
+        this.presenter.getGerenciadorLog().getLog().writeFuncionarioOperacao("inclusão", funcionario);
+        
     }
 
     private void addFuncionario() throws Exception {
@@ -43,7 +47,7 @@ public class InserirCommand extends ManterFuncionarioPresenterCommand {
                 new Cargo(cargo, salarioBase),
                 dataAdmissao,
                 IsFuncionarioDoMes);
-        
+
         FuncionarioCollection.getInstance().addFuncionario(funcionario);
         
         TipoBonus bonusIndependente = getBonusIndependenteFuncionario();
@@ -55,13 +59,13 @@ public class InserirCommand extends ManterFuncionarioPresenterCommand {
         funcionario.addBonus(bonusIndependente);
         funcionario.addBonus(bonusTempoDeServico);
         funcionario.addBonus(bonusAssiduidade);
-        funcionario.addBonus(bonusPorCargo);
+        funcionario.addBonus(bonusPorCargo);     
+        
+        this.funcionario = funcionario;
         
         if (IsFuncionarioDoMes) {
             funcionario.addBonus(bonusFuncionarioDoMes);
-        }
-        
-        
+        }     
     }
 
     private TipoBonus getBonusIndependenteFuncionario() {

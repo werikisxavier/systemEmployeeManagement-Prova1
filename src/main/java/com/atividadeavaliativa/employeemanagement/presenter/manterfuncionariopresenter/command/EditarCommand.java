@@ -48,6 +48,7 @@ public class EditarCommand extends ManterFuncionarioPresenterCommand {
                 TipoBonus bunus = getBonusFuncionario();
                 func.addBonus(bunus);
                 FuncionarioCollection.getInstance().notifyObservers();
+                this.presenter.getGerenciadorLog().getLog().writeFuncionarioOperacao("edicão", func);
             }
         }
     }

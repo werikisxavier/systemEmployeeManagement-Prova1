@@ -1,53 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.atividadeavaliativa.employeemanagement.logs;
 
+import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import org.json.simple.JSONObject;
-//import org.json.simple.JSONObject;
-//import util.DateFormat;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-/**
- *
- * @author W-E-R
- */
-public class JSONLog implements ILog {
+
+public class JSONLog implements ILogStrategy {
 
     private JSONObject obj;
     private JSONObject data;
 
-    private static ILog instence = null;
-
-    private JSONLog() {
-    obj = new JSONObject();
-    data = new JSONObject();
+    public JSONLog() {
+        resetObj();
     }
 
-    public static ILog getInstance() {
-        if (instence == null) {
-            instence = new JSONLog();
-        }
-        return instence;
-    }
-/**
     @Override
-    public void write(String operation, WeatherData weatherdata) {
-
-        data.put("temperatura", weatherdata.getTemperature());
-        data.put("humidade", weatherdata.getHumidity());
-        data.put("pressao", weatherdata.getPressure());
-        data.put("data", DateFormat.parseToString(weatherdata.getDate()));
-        obj.put("operacão", operation);
-        obj.put("dados", data);
+    public void writeFuncionarioOperacao(String operation, Funcionario funcionario) {
+        resetObj();
+        obj.put("funcionario", funcionario.getNome());
+        obj.put("operação", operation);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.json", true))) {
 
-            bw.write(obj.toJSONString());
+            bw.write(obj.toString()); //toJSONString()
             bw.newLine();
 
         } catch (IOException e) {
@@ -55,5 +34,43 @@ public class JSONLog implements ILog {
         }
 
     }
-*/
+
+    @Override
+    public void whiteBonusConsulta(Funcionario funcionario) {
+        resetObj();
+        obj.put("bonus consultado para o funcionario", funcionario.getNome());
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.json", true))) {
+
+            bw.write(obj.toString());
+            bw.newLine();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void whiteCalculoRealizado(List<Funcionario> funcionarios) {
+        resetObj();
+        JSONArray array = new JSONArray();
+        for (Funcionario funcionario : funcionarios) {
+            array.put(funcionario.getNome());
+        }
+
+        obj.put("salario calculado para o(s) funcionário(s)", array);
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.json", true))) {
+
+            bw.write(obj.toString());
+            bw.newLine();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void resetObj() {
+        obj = new JSONObject();
+        data = new JSONObject();
+    }
 }

@@ -1,20 +1,17 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
-import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.ExcluirCommand;
 import com.atividadeavaliativa.employeemanagement.utils.FormatarData;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 public class VisualizarState extends ManterFuncionarioPresenterState {
 
     private ManterFuncionarioView view;
-    private List<Funcionario> funcionarios;
     private Funcionario funcionario;
 
     public VisualizarState(ManterFuncionarioPresenter manterFuncionarioPresenter, Funcionario funcionario) {

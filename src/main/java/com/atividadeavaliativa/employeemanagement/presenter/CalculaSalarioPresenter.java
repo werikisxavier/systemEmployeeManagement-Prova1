@@ -1,5 +1,6 @@
 package com.atividadeavaliativa.employeemanagement.presenter;
 
+import com.atividadeavaliativa.employeemanagement.logs.GerenciadorStrategy;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.model.HistoricoCalculo;
 import com.atividadeavaliativa.employeemanagement.model.bonus.TipoBonus;
@@ -11,9 +12,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.input.DataFormat;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -24,20 +22,22 @@ public class CalculaSalarioPresenter {
     private final CalculaSalarioView view;
     private DefaultTableModel tbWeatherDatas;
     private List<HistoricoCalculo> historico;
+    private GerenciadorStrategy log;
 
-    private CalculaSalarioPresenter() {
+    private CalculaSalarioPresenter(GerenciadorStrategy log) {
         view = new CalculaSalarioView();
         view.setSize(640, 290);
         view.setLocation(0, 230);
         tableInit();
         initListeners();
         clearTable();
+        this.log = log;
         historico = new ArrayList<>();
     }
 
-    public static CalculaSalarioPresenter getInstance() {
+    public static CalculaSalarioPresenter getInstance(GerenciadorStrategy log) {
         if (instence == null) {
-            instence = new CalculaSalarioPresenter();
+            instence = new CalculaSalarioPresenter(log);
         }
         return instence;
     }
@@ -63,7 +63,7 @@ public class CalculaSalarioPresenter {
         view.getTblFuncionarios().setModel(tbWeatherDatas);
     }
 
-    public void realizarCalculo(List<Funcionario> funcionarios) throws Exception{
+    public void realizarCalculo(List<Funcionario> funcionarios) throws Exception {
         double somaBonusFuncionario = 0.0;
         if (funcionarios != null) {
             for (Funcionario funcionario : funcionarios) {
@@ -74,29 +74,28 @@ public class CalculaSalarioPresenter {
                     }
                 }
 
-                    String nomeFuncionario = funcionario.getNome();
-                    Date dataCalculo = view.getDcDataCalculo().getDate();
-                    double salarioBase = funcionario.getSalarioBase();
-                    double somaBonus = somaBonusFuncionario;
-                    double salario = funcionario.getSalarioBase() + somaBonusFuncionario;
+                String nomeFuncionario = funcionario.getNome();
+                Date dataCalculo = view.getDcDataCalculo().getDate();
+                double salarioBase = funcionario.getSalarioBase();
+                double somaBonus = somaBonusFuncionario;
+                double salario = funcionario.getSalarioBase() + somaBonusFuncionario;
 
-                    tbWeatherDatas.addRow(new Object[]{
-                        nomeFuncionario,
-                        FormatarData.parseDateToString(dataCalculo),
-                        salarioBase,
-                        somaBonus,
-                        salario
-                    });
+                tbWeatherDatas.addRow(new Object[]{
+                    nomeFuncionario,
+                    FormatarData.parseDateToString(dataCalculo),
+                    salarioBase,
+                    somaBonus,
+                    salario
+                });
 
-                    historico.add(new HistoricoCalculo(nomeFuncionario, dataCalculo, salarioBase, somaBonus, salario));
-
+                historico.add(new HistoricoCalculo(nomeFuncionario, dataCalculo, salarioBase, somaBonus, salario));                
                 funcionario.setSalario(funcionario.getSalarioBase() + somaBonusFuncionario);
             }
         }
-
+        this.getGerenciadorLog().getLog().whiteCalculoRealizado(funcionarios);
     }
 
-    public void listarTodos(List<HistoricoCalculo> historico) throws Exception{
+    public void listarTodos(List<HistoricoCalculo> historico) throws Exception {
         if (!historico.isEmpty()) {
             clearTable();
             for (HistoricoCalculo calculo : historico) {
@@ -108,12 +107,12 @@ public class CalculaSalarioPresenter {
                     calculo.getSalario()
                 });
             }
-        }else{
+        } else {
             throw new Exception("Historico de calculos realizados está vazio!");
         }
     }
 
-    public void listarPorData(List<HistoricoCalculo> historico) throws Exception{
+    public void listarPorData(List<HistoricoCalculo> historico) throws Exception {
         if (historico != null) {
             clearTable();
             String dataBusca = FormatarData.parseDateToString(view.getDcDDataBusca().getDate());
@@ -134,7 +133,7 @@ public class CalculaSalarioPresenter {
     }
 
     private void initListeners() {
-        
+
         view.getBtListarTodos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -153,7 +152,7 @@ public class CalculaSalarioPresenter {
             }
         });
 
-        view.getBtCalcular().addActionListener(new ActionListener()  {
+        view.getBtCalcular().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -174,7 +173,11 @@ public class CalculaSalarioPresenter {
                 }
             }
         });
-        
+
+    }
+          
+    public GerenciadorStrategy getGerenciadorLog() {
+        return log;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter;
 
+import com.atividadeavaliativa.employeemanagement.logs.GerenciadorStrategy;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state.InclusaoState;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state.ManterFuncionarioPresenterState;
 import com.atividadeavaliativa.employeemanagement.view.ManterFuncionarioView;
@@ -9,17 +10,19 @@ public class ManterFuncionarioPresenter {
     private static ManterFuncionarioPresenter instence = null;
     private final ManterFuncionarioView view;
     private ManterFuncionarioPresenterState estado;
-
-    private ManterFuncionarioPresenter() {
+    private GerenciadorStrategy log;
+    
+    private ManterFuncionarioPresenter(GerenciadorStrategy log) {
 
         view = new ManterFuncionarioView();
         view.setSize(640, 235);
         this.estado = new InclusaoState(this,null);
+        this.log=log;
     }
     
-    public static ManterFuncionarioPresenter getInstance() {
+    public static ManterFuncionarioPresenter getInstance(GerenciadorStrategy log) {
         if (instence == null) {
-            instence = new ManterFuncionarioPresenter();
+            instence = new ManterFuncionarioPresenter(log);
         }
         return instence;
     }
@@ -35,5 +38,11 @@ public class ManterFuncionarioPresenter {
     public void setEstado(ManterFuncionarioPresenterState estado) {
         this.estado = estado;
     }
+
+    public GerenciadorStrategy getGerenciadorLog() {
+        return log;
+    }
+    
+    
 
 }

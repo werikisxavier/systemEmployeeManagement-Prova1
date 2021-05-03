@@ -29,8 +29,9 @@ public class EditarState extends ManterFuncionarioPresenterState {
     public void salvar() throws Exception {
         new EditarCommand(this.presenter,funcionario.getId()).executar();
         JOptionPane.showMessageDialog(view, "Funcionário editado com sucesso!");
-        BuscarFuncionarioPresenter.getInstance().setEstado(new VisualizacaoState(
-                BuscarFuncionarioPresenter.getInstance()));
+        BuscarFuncionarioPresenter.getInstance(this.presenter.getGerenciadorLog()).setEstado(
+                new VisualizacaoState(BuscarFuncionarioPresenter.getInstance(
+                        this.presenter.getGerenciadorLog())));
         this.presenter.setEstado(new VisualizarState (presenter, funcionario));
     }
 

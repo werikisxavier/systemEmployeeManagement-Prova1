@@ -1,5 +1,8 @@
 package com.atividadeavaliativa.employeemanagement.presenter;
 
+import com.atividadeavaliativa.employeemanagement.logs.GerenciadorStrategy;
+import com.atividadeavaliativa.employeemanagement.logs.ILogStrategy;
+import com.atividadeavaliativa.employeemanagement.logs.JSONLog;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.BuscarFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
@@ -19,7 +22,7 @@ public class TelaPrincipalPresenter implements IObserver {
     private BuscarFuncionarioPresenter buscarFuncionarioPresenter;
     private ManterFuncionarioPresenter manterFuncionarioPresenter;
     private CalculaSalarioPresenter calculaSalarioPresenter;
-    private VerBonusPresenter verBonusPresenter;
+    private GerenciadorStrategy log;
 
     private TelaPrincipalPresenter() {
 
@@ -28,6 +31,7 @@ public class TelaPrincipalPresenter implements IObserver {
         view.setLocationRelativeTo(view.getParent());
         view.setVisible(true);
         funcionarios = FuncionarioCollection.getInstance();;
+        log= new GerenciadorStrategy(new JSONLog());
         iniciarViews();
         funcionarios.registerObserver(buscarFuncionarioPresenter);
         funcionarios.registerObserver(this);
@@ -42,9 +46,9 @@ public class TelaPrincipalPresenter implements IObserver {
     }
 
     private void iniciarViews() {
-        manterFuncionarioPresenter = ManterFuncionarioPresenter.getInstance();
-        buscarFuncionarioPresenter = BuscarFuncionarioPresenter.getInstance();
-        calculaSalarioPresenter = CalculaSalarioPresenter.getInstance();
+        manterFuncionarioPresenter = ManterFuncionarioPresenter.getInstance(log);
+        buscarFuncionarioPresenter = BuscarFuncionarioPresenter.getInstance(log);
+        calculaSalarioPresenter = CalculaSalarioPresenter.getInstance(log);
     }
 
     private void initListeners() {
@@ -62,6 +66,7 @@ public class TelaPrincipalPresenter implements IObserver {
             public void actionPerformed(ActionEvent e) {
                 view.add(buscarFuncionarioPresenter.getView());
                 buscarFuncionarioPresenter.getView().setVisible(true);
+                
             }
         });
 
@@ -71,6 +76,13 @@ public class TelaPrincipalPresenter implements IObserver {
                 view.add(calculaSalarioPresenter.getView());
                 calculaSalarioPresenter.getView().setVisible(true);
                 
+            }
+        });
+        
+        view.getMenuItemFerramenta().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ConfigurarLogPresenter();
             }
         });
     }
@@ -87,5 +99,10 @@ public class TelaPrincipalPresenter implements IObserver {
     public void update(List<Funcionario> funcionarios) {
         view.setLbFuncionarios(String.valueOf(funcionarios.size()));
     }
+    
+    public void setLogStrategy(ILogStrategy log){
+        this.log.setLog(log);
+    }
+    
 
 }

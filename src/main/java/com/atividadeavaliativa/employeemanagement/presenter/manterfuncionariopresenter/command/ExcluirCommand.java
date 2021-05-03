@@ -20,6 +20,7 @@ public class ExcluirCommand extends ManterFuncionarioPresenterCommand {
     
     private void excluirFuncionario() {
         FuncionarioCollection.getInstance().removeFuncionario(funcionario);
+        this.presenter.getGerenciadorLog().getLog().writeFuncionarioOperacao("exclusão", funcionario);
     }
     
 }

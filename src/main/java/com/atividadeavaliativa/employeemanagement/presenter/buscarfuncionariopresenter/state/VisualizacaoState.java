@@ -21,8 +21,8 @@ public class VisualizacaoState extends BuscarFuncionarioPresenterState {
 
     @Override
     public void incluir() {
-        TelaPrincipalPresenter.getInstance().getView().add(ManterFuncionarioPresenter.getInstance().getView());
-        ManterFuncionarioPresenter.getInstance().getView().setVisible(true);
+        TelaPrincipalPresenter.getInstance().getView().add(ManterFuncionarioPresenter.getInstance(this.presenter.getGerenciadorLog()).getView());
+        ManterFuncionarioPresenter.getInstance(this.presenter.getGerenciadorLog()).getView().setVisible(true);
     }
 
     public void visualizar() {
@@ -54,8 +54,17 @@ public class VisualizacaoState extends BuscarFuncionarioPresenterState {
                 fechar();
             }
         });
+        
+        view.getBtBuscar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            buscar();
+            }
+        });
     }
 
+    
+    
     private void configurarView() {
         this.presenter.getView().setEnabled(false);
         this.presenter.getView().getBtBuscar().setEnabled(true);
@@ -66,11 +75,16 @@ public class VisualizacaoState extends BuscarFuncionarioPresenterState {
         this.presenter.getView().getTfNome().setText("");
         this.presenter.getView().getTfNome().setEditable(true);
         this.presenter.getView().setEnabled(true);
-
     }
 
+    private void buscar(){
+        this.presenter.buscarPorNome();
+    }
+    
     private Integer getFuncionarioSelecionado() {
         Integer idSelecionado = (Integer) (view.getTblFuncionarios().getValueAt(view.getTblFuncionarios().getSelectedRow(), 0));
         return idSelecionado;
     }
+    
+   
 }

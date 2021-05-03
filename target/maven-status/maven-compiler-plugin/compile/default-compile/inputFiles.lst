@@ -4,6 +4,7 @@ C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\a
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\manterfuncionariopresenter\state\EditarState.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\view\BuscarFuncionarioView.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\model\observer\IObserver.java
+C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\model\HistoricoCalculo.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\view\ManterFuncionarioView.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\view\TelaPrincipalView.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\manterfuncionariopresenter\command\EditarCommand.java
@@ -13,6 +14,7 @@ C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\a
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\TelaPrincipalPresenter.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\view\CalculaSalarioView.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\logs\JSONLog.java
+C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\logs\GerenciadorStrategy.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\model\Funcionario.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\CalculaSalarioPresenter.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\manterfuncionariopresenter\state\ManterFuncionarioPresenterState.java
@@ -24,12 +26,14 @@ C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\a
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\model\Cargo.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\model\bonus\BonusAssiduidade.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\model\bonus\BonusFuncionarioDoMes.java
-C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\logs\ILog.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\buscarfuncionariopresenter\state\VisualizacaoState.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\manterfuncionariopresenter\command\ManterFuncionarioPresenterCommand.java
+C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\ConfigurarLogPresenter.java
+C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\view\ConfigurarLogView.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\application\Program.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\manterfuncionariopresenter\command\InserirCommand.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\VerBonusPresenter.java
+C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\logs\ILogStrategy.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\buscarfuncionariopresenter\BuscarFuncionarioPresenter.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\utils\FormatarData.java
 C:\Users\W-E-R\Documents\NetBeansProjects\employeeManagement\src\main\java\com\atividadeavaliativa\employeemanagement\presenter\buscarfuncionariopresenter\state\BuscarFuncionarioPresenterState.java

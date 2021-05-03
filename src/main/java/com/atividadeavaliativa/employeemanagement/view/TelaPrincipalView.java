@@ -37,6 +37,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         menuItemCalculaSalario = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        menuItemFerramenta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Principal");
@@ -81,13 +82,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lbVersao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btXML, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbFuncionarios)
                 .addContainerGap())
         );
@@ -134,6 +135,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setForeground(new java.awt.Color(51, 51, 51));
         jMenu4.setText("Ferramentas");
+
+        menuItemFerramenta.setText("Configuração Log");
+        menuItemFerramenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemFerramentaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuItemFerramenta);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -170,6 +180,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btXMLActionPerformed
 
+    private void menuItemFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFerramentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemFerramentaActionPerformed
+
     public JButton getBtJSON() {
         return btJSON;
     }
@@ -194,8 +208,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         this.lbVersao = lbVersao;
     }
     
-    
-
     public JLabel getLbVersao() {
         return lbVersao;
     }
@@ -211,6 +223,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     public JMenuItem getMenuItemManterFuncionario() {
         return menuItemManterFuncionario;
     }
+
+    public JMenuItem getMenuItemFerramenta() {
+        return menuItemFerramenta;
+    }
+    
 
     
     
@@ -228,6 +245,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel lbVersao;
     private javax.swing.JMenuItem menuItemBuscarFuncionario;
     private javax.swing.JMenuItem menuItemCalculaSalario;
+    private javax.swing.JMenuItem menuItemFerramenta;
     private javax.swing.JMenuItem menuItemManterFuncionario;
     // End of variables declaration//GEN-END:variables
 
