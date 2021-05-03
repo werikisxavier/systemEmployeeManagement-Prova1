@@ -31,7 +31,7 @@ public class TelaPrincipalPresenter implements IObserver {
         view = new TelaPrincipalView();
         view.setSize(1300, 610);
         view.setLocationRelativeTo(view.getParent());
-        view.setVisible(true);
+        view.setVisible(true);   
         funcionarios = FuncionarioCollection.getInstance();;
         log= new GerenciadorStrategy(new JSONLog());
         iniciarViews();
@@ -51,6 +51,7 @@ public class TelaPrincipalPresenter implements IObserver {
         manterFuncionarioPresenter = ManterFuncionarioPresenter.getInstance(log);
         buscarFuncionarioPresenter = BuscarFuncionarioPresenter.getInstance(log);
         calculaSalarioPresenter = CalculaSalarioPresenter.getInstance(log);
+        view.getBtTelaPrincipal().setEnabled(false);
     }
 
     private void initListeners() {
@@ -102,9 +103,11 @@ public class TelaPrincipalPresenter implements IObserver {
         view.setLbFuncionarios(String.valueOf(funcionarios.size()));
     }
     
-    public void setLogStrategy(ILogStrategy log){
+    public void setLogStrategy(Integer opcao,ILogStrategy log){
         this.log.setLog(log);
-        
+        if (opcao == 0) {this.view.getBtTelaPrincipal().setText("JSON");}
+        if (opcao == 1) {this.view.getBtTelaPrincipal().setText("XML");}
+        if (opcao == 2) {this.view.getBtTelaPrincipal().setText("TXT");}  
     }
     
 

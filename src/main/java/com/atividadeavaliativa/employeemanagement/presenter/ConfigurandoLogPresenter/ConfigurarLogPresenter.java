@@ -48,8 +48,8 @@ public class ConfigurarLogPresenter {
 
     private void setLog() throws Exception{
         int opcao = jDialog.getCbLog().getSelectedIndex();
-        if (opcao == 0) {TelaPrincipalPresenter.getInstance().setLogStrategy(new JSONLog());}
-        if (opcao == 1) {TelaPrincipalPresenter.getInstance().setLogStrategy(new XMLLog());}
-        if (opcao == 2) {TelaPrincipalPresenter.getInstance().setLogStrategy(new TXTLog());} 
+        if (opcao == 0) {TelaPrincipalPresenter.getInstance().setLogStrategy(opcao, new JSONLog());}
+        if (opcao == 1) {TelaPrincipalPresenter.getInstance().setLogStrategy(opcao, new XMLLog());}
+        if (opcao == 2) {TelaPrincipalPresenter.getInstance().setLogStrategy(opcao, new TXTLog());} 
     }
 }

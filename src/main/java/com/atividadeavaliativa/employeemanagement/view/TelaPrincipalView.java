@@ -25,10 +25,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btXML = new javax.swing.JButton();
         lbVersao = new javax.swing.JLabel();
-        btTxt = new javax.swing.JButton();
-        btJSON = new javax.swing.JButton();
+        btTelaPrincipal = new javax.swing.JButton();
         lbFuncionarios = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -44,30 +42,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btXML.setBackground(new java.awt.Color(255, 255, 255));
-        btXML.setText("XML");
-        btXML.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btXMLActionPerformed(evt);
-            }
-        });
-
         lbVersao.setForeground(new java.awt.Color(51, 51, 51));
         lbVersao.setText("1.2");
 
-        btTxt.setBackground(new java.awt.Color(255, 255, 255));
-        btTxt.setText("Txt");
-        btTxt.addActionListener(new java.awt.event.ActionListener() {
+        btTelaPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        btTelaPrincipal.setText("JSON");
+        btTelaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btTxtActionPerformed(evt);
-            }
-        });
-
-        btJSON.setBackground(new java.awt.Color(255, 255, 255));
-        btJSON.setText("JSON");
-        btJSON.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btJSONActionPerformed(evt);
+                btTelaPrincipalActionPerformed(evt);
             }
         });
 
@@ -82,13 +64,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(lbVersao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btXML, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btJSON, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(btTelaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(lbFuncionarios)
                 .addContainerGap())
         );
@@ -96,9 +74,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btXML)
-                    .addComponent(btTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btJSON)
+                    .addComponent(btTelaPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbVersao)
                     .addComponent(lbFuncionarios))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -168,32 +144,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemBuscarFuncionarioActionPerformed
 
-    private void btJSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btJSONActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btJSONActionPerformed
-
-    private void btTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTxtActionPerformed
-
-    private void btXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXMLActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btXMLActionPerformed
-
     private void menuItemFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFerramentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemFerramentaActionPerformed
 
-    public JButton getBtJSON() {
-        return btJSON;
-    }
+    private void btTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTelaPrincipalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTelaPrincipalActionPerformed
 
-    public JButton getBtTxt() {
-        return btTxt;
-    }
-
-    public JButton getBtXML() {
-        return btXML;
+    public JButton getBtTelaPrincipal() {
+        return btTelaPrincipal;
     }
 
     public JLabel getLbFuncionarios() {
@@ -233,9 +193,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btJSON;
-    private javax.swing.JButton btTxt;
-    private javax.swing.JButton btXML;
+    private javax.swing.JButton btTelaPrincipal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
