@@ -10,8 +10,8 @@ import java.util.List;
 public class FuncionarioCollection implements ISubject {
 
     private static FuncionarioCollection instancia = null;
-    private List<Funcionario> funcionarios;
-    private ArrayList<IObserver> observers;
+    private final List<Funcionario> funcionarios;
+    private final ArrayList<IObserver> observers;
 
     private FuncionarioCollection() {
         funcionarios = new ArrayList<>();

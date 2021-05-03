@@ -1,6 +1,5 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state;
 
-import com.atividadeavaliativa.employeemanagement.logs.ILogStrategy;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.command.InserirCommand;
@@ -32,8 +31,10 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
             public void actionPerformed(ActionEvent e) {
                 try {
                     salvar();
+                    configurarView();
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(view, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    gerarlogException(ex.getMessage());
+                    JOptionPane.showMessageDialog(view, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);                    
                 }
             }
         });
@@ -71,6 +72,10 @@ public class InclusaoState extends ManterFuncionarioPresenterState {
         this.presenter.getView().getCbBonus().setEnabled(true);
         this.presenter.getView().getCbbFuncionárioDoMês().setSelected(false);
         this.presenter.getView().getCbbFuncionárioDoMês().setEnabled(true);
+    }
+    
+    private void gerarlogException(String falha){
+        this.presenter.getGerenciadorLog().getLog().writeFalha(falha);
     }
 
 }

@@ -33,7 +33,7 @@ public class XMLLog implements ILogStrategy {
     public void writeFuncionarioOperacao(String operacao, Funcionario funcionario) {
         gerarLog(operacao, funcionario);
     }
-    
+
     @Override
     public void whiteBonusConsulta(Funcionario funcionario) {
         gerarLog("BonusConsultado", funcionario);
@@ -43,9 +43,13 @@ public class XMLLog implements ILogStrategy {
     public void whiteCalculoRealizado(List<Funcionario> funcionarios) {
         gerarLogList(funcionarios);
     }
-    
-    
-    private void gerarLog(String operation,Funcionario funcionario){
+
+    @Override
+    public void writeFalha(String falha) {
+        gerarLogFalha(falha);
+    }
+
+    private void gerarLog(String operation, Funcionario funcionario) {
         try {
             document = createnodes(operation, funcionario);
 
@@ -64,14 +68,14 @@ public class XMLLog implements ILogStrategy {
             StreamResult result = new StreamResult(bufferWritter);
 
             transformer.transform(source, result);
-            
+
             fileWritter.write("\n");
 
         } catch (ParserConfigurationException | TransformerException | IOException ex) {
             Logger.getLogger(XMLLog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private Document createnodes(String operation, Funcionario funcionario) throws ParserConfigurationException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -91,7 +95,7 @@ public class XMLLog implements ILogStrategy {
         dados.setAttributeNode(nome);
         return document;
     }
-    
+
     private Document createnodesList(List<Funcionario> funcionarios) throws ParserConfigurationException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -100,18 +104,16 @@ public class XMLLog implements ILogStrategy {
         Element element = document.createElement("SalarioConsultadoList");
         document.appendChild(element);
 
-        
         for (Funcionario funcionario : funcionarios) {
             Element funcionarioNode = document.createElement("Funcionario");
             funcionarioNode.appendChild(document.createTextNode(funcionario.getNome()));
             element.appendChild(funcionarioNode);
         }
-       
+
         return document;
     }
-    
-    
-    private void gerarLogList(List<Funcionario> funcionarios){
+
+    private void gerarLogList(List<Funcionario> funcionarios) {
         try {
             document = createnodesList(funcionarios);
 
@@ -130,11 +132,59 @@ public class XMLLog implements ILogStrategy {
             StreamResult result = new StreamResult(bufferWritter);
 
             transformer.transform(source, result);
-            
+
             fileWritter.write("\n");
 
         } catch (ParserConfigurationException | TransformerException | IOException ex) {
             Logger.getLogger(XMLLog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    private void gerarLogFalha(String falha) {
+        try {
+            document = createnodesFalha(falha);
+
+            FileWriter fileWritter = new FileWriter(new File("out.xml"), true);
+            BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+
+            Transformer transformer = tFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+            DOMSource source = new DOMSource(document);
+
+            StreamResult result = new StreamResult(bufferWritter);
+
+            transformer.transform(source, result);
+
+            fileWritter.write("\n");
+
+        } catch (ParserConfigurationException | TransformerException | IOException ex) {
+            Logger.getLogger(XMLLog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private Document createnodesFalha(String falha) throws ParserConfigurationException {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+        Document document = documentBuilder.newDocument();
+        Element element = document.createElement("Falha");
+        document.appendChild(element);
+
+        Node funci = document.getFirstChild();
+        //CRIANDO NODE
+        Element dados = document.createElement("descricao");
+        funci.appendChild(dados);
+
+        //NOME
+        Attr nome = document.createAttribute("log");
+        nome.setValue(falha);
+        dados.setAttributeNode(nome);
+        return document;
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.state;
 
-import com.atividadeavaliativa.employeemanagement.presenter.TelaPrincipalPresenter;
+import com.atividadeavaliativa.employeemanagement.presenter.TelaPrincipalPresenter.TelaPrincipalPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.BuscarFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.view.BuscarFuncionarioView;

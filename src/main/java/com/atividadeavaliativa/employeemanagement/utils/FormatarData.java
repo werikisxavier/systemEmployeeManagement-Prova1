@@ -22,8 +22,12 @@ public class FormatarData {
         return instance;
     }
 
-    public static LocalDate parseStringToLocalDate(String date) throws ParseException {
+    public static LocalDate parseStringToLocalDate(String date) throws ParseException, Exception {
         LocalDate localdate = LocalDate.parse(date, formatter);
+        if(localdate.isAfter(LocalDate.now())){
+            throw new Exception("A data não pode ser superior a data atual!");
+        }
+        
         return localdate;
     }
 

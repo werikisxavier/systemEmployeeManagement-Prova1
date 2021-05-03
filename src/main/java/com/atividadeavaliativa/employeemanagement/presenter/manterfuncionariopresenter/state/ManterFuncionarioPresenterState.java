@@ -1,6 +1,5 @@
 package com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state;
 
-import com.atividadeavaliativa.employeemanagement.logs.ILogStrategy;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import java.awt.Component;

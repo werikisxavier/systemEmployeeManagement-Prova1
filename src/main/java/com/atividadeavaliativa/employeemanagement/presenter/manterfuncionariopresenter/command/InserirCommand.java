@@ -39,6 +39,10 @@ public class InserirCommand extends ManterFuncionarioPresenterCommand {
 
         double salarioBase = Double.valueOf(view.getTfSalario().getText());
         boolean IsFuncionarioDoMes = verificarOpcaoFuncionarioDoMes();
+        if (quantidaDeFaltas<0){
+            throw new Exception("A quantidade de faltas não pode ser negativa!");
+        }
+        
         Funcionario funcionario = new Funcionario(
                 getIdFuncionario(),
                 nome,

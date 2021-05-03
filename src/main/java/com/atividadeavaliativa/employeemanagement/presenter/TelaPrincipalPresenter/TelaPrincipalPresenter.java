@@ -1,5 +1,6 @@
-package com.atividadeavaliativa.employeemanagement.presenter;
+package com.atividadeavaliativa.employeemanagement.presenter.TelaPrincipalPresenter;
 
+import com.atividadeavaliativa.employeemanagement.presenter.CalculaSalarioPresenter.CalculaSalarioPresenter;
 import com.atividadeavaliativa.employeemanagement.logs.GerenciadorStrategy;
 import com.atividadeavaliativa.employeemanagement.logs.ILogStrategy;
 import com.atividadeavaliativa.employeemanagement.logs.JSONLog;
@@ -8,6 +9,7 @@ import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopre
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
 import com.atividadeavaliativa.employeemanagement.model.observer.IObserver;
+import com.atividadeavaliativa.employeemanagement.presenter.ConfigurandoLogPresenter.ConfigurarLogPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state.InclusaoState;
 import com.atividadeavaliativa.employeemanagement.view.TelaPrincipalView;
 import java.awt.event.ActionEvent;
@@ -102,6 +104,7 @@ public class TelaPrincipalPresenter implements IObserver {
     
     public void setLogStrategy(ILogStrategy log){
         this.log.setLog(log);
+        
     }
     
 

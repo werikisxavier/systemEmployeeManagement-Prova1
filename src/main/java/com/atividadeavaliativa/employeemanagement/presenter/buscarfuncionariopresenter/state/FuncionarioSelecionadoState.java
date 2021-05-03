@@ -2,7 +2,7 @@ package com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopr
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
 import com.atividadeavaliativa.employeemanagement.model.collections.FuncionarioCollection;
-import com.atividadeavaliativa.employeemanagement.presenter.VerBonusPresenter;
+import com.atividadeavaliativa.employeemanagement.presenter.VerBonusPresenter.VerBonusPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.buscarfuncionariopresenter.BuscarFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.ManterFuncionarioPresenter;
 import com.atividadeavaliativa.employeemanagement.presenter.manterfuncionariopresenter.state.VisualizarState;
@@ -10,6 +10,7 @@ import com.atividadeavaliativa.employeemanagement.view.BuscarFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState {
 
@@ -85,8 +86,8 @@ public class FuncionarioSelecionadoState extends BuscarFuncionarioPresenterState
     }
 
     private Integer getFuncionarioSelecionado() {
-        Integer idSelecionado = (Integer) (view.getTblFuncionarios().getValueAt(view.getTblFuncionarios().getSelectedRow(), 0));
-        return idSelecionado;
+            Integer idSelecionado = (Integer) (view.getTblFuncionarios().getValueAt(view.getTblFuncionarios().getSelectedRow(), 0));
+            return idSelecionado;
     }
 
     private Funcionario getFuncionario() {

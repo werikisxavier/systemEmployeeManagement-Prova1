@@ -27,12 +27,12 @@ public class EditarState extends ManterFuncionarioPresenterState {
 
     @Override
     public void salvar() throws Exception {
-        new EditarCommand(this.presenter,funcionario.getId()).executar();
+        new EditarCommand(this.presenter, funcionario.getId()).executar();
         JOptionPane.showMessageDialog(view, "Funcionário editado com sucesso!");
         BuscarFuncionarioPresenter.getInstance(this.presenter.getGerenciadorLog()).setEstado(
                 new VisualizacaoState(BuscarFuncionarioPresenter.getInstance(
                         this.presenter.getGerenciadorLog())));
-        this.presenter.setEstado(new VisualizarState (presenter, funcionario));
+        this.presenter.setEstado(new VisualizarState(presenter, funcionario));
     }
 
     private void initListeners() {
@@ -42,6 +42,7 @@ public class EditarState extends ManterFuncionarioPresenterState {
                 try {
                     salvar();
                 } catch (Exception ex) {
+                    gerarlogException(ex.getMessage());
                     JOptionPane.showMessageDialog(view, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -82,4 +83,7 @@ public class EditarState extends ManterFuncionarioPresenterState {
         this.presenter.getView().setEnabled(true);
     }
 
+    private void gerarlogException(String falha) {
+        this.presenter.getGerenciadorLog().getLog().writeFalha(falha);
+    }
 }

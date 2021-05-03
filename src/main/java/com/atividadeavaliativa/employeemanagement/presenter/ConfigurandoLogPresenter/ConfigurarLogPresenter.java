@@ -1,5 +1,6 @@
-package com.atividadeavaliativa.employeemanagement.presenter;
+package com.atividadeavaliativa.employeemanagement.presenter.ConfigurandoLogPresenter;
 
+import com.atividadeavaliativa.employeemanagement.presenter.TelaPrincipalPresenter.TelaPrincipalPresenter;
 import com.atividadeavaliativa.employeemanagement.logs.JSONLog;
 import com.atividadeavaliativa.employeemanagement.logs.TXTLog;
 import com.atividadeavaliativa.employeemanagement.logs.XMLLog;

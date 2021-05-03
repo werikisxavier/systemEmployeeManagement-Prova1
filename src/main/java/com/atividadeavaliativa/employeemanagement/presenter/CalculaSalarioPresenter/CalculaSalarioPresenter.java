@@ -1,4 +1,4 @@
-package com.atividadeavaliativa.employeemanagement.presenter;
+package com.atividadeavaliativa.employeemanagement.presenter.CalculaSalarioPresenter;
 
 import com.atividadeavaliativa.employeemanagement.logs.GerenciadorStrategy;
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
@@ -139,8 +139,9 @@ public class CalculaSalarioPresenter {
             public void actionPerformed(ActionEvent e) {
                 try {
                     listarTodos(historico);
-                } catch (Exception ex) {
+                } catch (Exception ex) {  
                     JOptionPane.showMessageDialog(view, "Error: " + ex.getMessage());
+                    gerarlogException(ex.getMessage());
                 }
             }
         });
@@ -159,6 +160,7 @@ public class CalculaSalarioPresenter {
                     realizarCalculo(FuncionarioCollection.getInstance().getFuncionarios());
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(view, "Error: " + ex.getMessage());
+                    gerarlogException(ex.getMessage());
                 }
             }
         });
@@ -170,6 +172,7 @@ public class CalculaSalarioPresenter {
                     listarPorData(historico);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(view, "Error: " + ex.getMessage());
+                    gerarlogException(ex.getMessage());
                 }
             }
         });
@@ -178,6 +181,10 @@ public class CalculaSalarioPresenter {
           
     public GerenciadorStrategy getGerenciadorLog() {
         return log;
+    }
+    
+    private void gerarlogException(String falha){
+        this.log.getLog().writeFalha(falha);
     }
 
 }

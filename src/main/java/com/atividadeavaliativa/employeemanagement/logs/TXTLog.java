@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.atividadeavaliativa.employeemanagement.logs;
 
 import com.atividadeavaliativa.employeemanagement.model.Funcionario;
@@ -44,6 +40,16 @@ public class TXTLog implements ILogStrategy {
                 bw.newLine();
             }
             bw.write("]");
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void writeFalha(String falha) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.txt", true))) {
+            bw.write("Falha: " +falha );      
             bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();

@@ -12,15 +12,13 @@ import org.json.JSONObject;
 public class JSONLog implements ILogStrategy {
 
     private JSONObject obj;
-    private JSONObject data;
 
     public JSONLog() {
-        resetObj();
     }
 
     @Override
     public void writeFuncionarioOperacao(String operation, Funcionario funcionario) {
-        resetObj();
+        obj = new JSONObject();
         obj.put("funcionario", funcionario.getNome());
         obj.put("operação", operation);
 
@@ -37,7 +35,7 @@ public class JSONLog implements ILogStrategy {
 
     @Override
     public void whiteBonusConsulta(Funcionario funcionario) {
-        resetObj();
+        obj = new JSONObject();
         obj.put("bonus consultado para o funcionario", funcionario.getNome());
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.json", true))) {
 
@@ -51,7 +49,7 @@ public class JSONLog implements ILogStrategy {
 
     @Override
     public void whiteCalculoRealizado(List<Funcionario> funcionarios) {
-        resetObj();
+        obj = new JSONObject();
         JSONArray array = new JSONArray();
         for (Funcionario funcionario : funcionarios) {
             array.put(funcionario.getNome());
@@ -69,8 +67,20 @@ public class JSONLog implements ILogStrategy {
         }
     }
 
-    private void resetObj() {
-        obj = new JSONObject();
-        data = new JSONObject();
+    @Override
+    public void writeFalha(String falha) {
+         obj = new JSONObject();
+
+        obj.put("Falha: ", falha);
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("out.json", true))) {
+
+            bw.write(obj.toString());
+            bw.newLine();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

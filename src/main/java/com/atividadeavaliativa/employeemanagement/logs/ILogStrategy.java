@@ -12,4 +12,5 @@ public interface ILogStrategy {
     
     public void whiteCalculoRealizado(List<Funcionario> funcionarios);
     
+    public void writeFalha(String falha);
 }
